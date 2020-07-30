@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Monda';
+    src: url('../fonts/Monda-Regular.ttf') format('truetype');
+}
+
+.red {
+    margin-top: 30px;
+    text-align: center;
+    font-family: Monda, sans-serif;
+    font-size: 42px;
+    color: darkred;
+}
