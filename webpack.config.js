@@ -20,7 +20,7 @@ module.exports = () => {
         },
         resolve: {
             modules: [path.resolve(__dirname, './'), 'node_modules'],
-            extensions: ['.js', '.jsx']
+            extensions: ['.js', '.jsx','.ts', '.tsx']
         },
         optimization: {
             minimizer: isDev ? [] : [
@@ -58,6 +58,23 @@ module.exports = () => {
                         options: {
                             presets: [
                                 '@babel/preset-env',
+                                '@babel/preset-react'
+                            ],
+                            plugins: [
+                                '@babel/plugin-proposal-class-properties'
+                            ]
+                        }
+                    }
+                },
+                {
+                    test: /\.ts(x)?$/,
+                    exclude: /node_modules/,
+                    loader: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                '@babel/preset-env',
+                                '@babel/preset-typescript',
                                 '@babel/preset-react'
                             ],
                             plugins: [

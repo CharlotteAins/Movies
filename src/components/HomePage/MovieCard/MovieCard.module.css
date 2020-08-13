@@ -1,0 +1,47 @@
+.movieCard {
+    position: relative;
+    margin-bottom: 60px;
+    color: #bbb8b8;
+}
+
+.movieCard:hover .cardMenuButton {
+    opacity: 1;
+}
+
+.filmInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.filmTitle {
+    padding: 7px 0;
+    font-size: 20px;
+}
+
+.filmTagline {
+    color: #7f7f7f;
+}
+
+.filmYear {
+    padding: 7px 15px;
+    border: 1px solid #9e9c9c;
+    border-radius: 5px;
+}
+
+.cardMenuButton {
+    position: absolute;
+    padding: 0 10px 20px;
+    top: 15px;
+    right: 15px;
+    font-size: 40px;
+    color: antiquewhite;
+    background: #232323;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
+    transform: rotate(90deg);
+    transition: opacity 0.5s;
+}
