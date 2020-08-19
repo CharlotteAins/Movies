@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './FilterWrapper.module.css';
-import FilmCategories from '../Filmcategories/FilmCategories';
-import FilmsSort from '../FilmsSort/FilmsSort';
+import styles from './FilterPanel.module.css';
+import FilmCategories from '../Filmcategories';
+import FilmsSort from '../FilmsSort';
 
-const FilterWrapper: React.FC = () => {
+const FilterPanel: React.FC = () => {
     return (
         <>
             <div className={styles.filmOptions}>
@@ -15,4 +15,4 @@ const FilterWrapper: React.FC = () => {
     );
 };
 
-export default FilterWrapper;
+export default FilterPanel;

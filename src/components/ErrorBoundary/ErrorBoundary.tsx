@@ -6,11 +6,11 @@ class ErrorBoundary extends React.Component {
         hasError: false,
     };
 
-    public static getDerivedStateFromError() {
+    public static getDerivedStateFromError(): any {
         return {hasError: true};
     }
 
-    render() {
+    render(): React.ReactNode {
         if (this.state.hasError) {
             return (
                 <div className={styles.errorBoundary}>

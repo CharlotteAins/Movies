@@ -1,5 +1,5 @@
 import React from 'react';
-import PrettyButton from '../PrettyButton/PrettyButton';
+import PrettyButton from '../PrettyButton';
 import styles from './Seach.module.css';
 
 const Search: React.FC = () => {
