@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../Header';
-import styles from './HeadWrapper.module.css';
+import styles from './HeadLayout.module.css';
 
 interface WrapperProps {
     children: React.ReactNode
@@ -8,7 +8,7 @@ interface WrapperProps {
 
 const HeaderLayout: React.FC<WrapperProps> = ({children}) => {
     return (
-        <div className={styles.headerWrapper}>
+        <div className={styles.headerLayout}>
             <Header />
             {children}
         </div>

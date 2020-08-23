@@ -3,7 +3,7 @@ import styles from './FilmCategories.module.css';
 import {MovieService} from '../../services/MovieService';
 
 const FilmCategories: React.FC = () => {
-    const categories = MovieService.getAllMovieCategories();
+    const categories = MovieService.getAllMovieCategories().slice(0, 5);
 
     return (
         <ul className={styles.categoriesList}>

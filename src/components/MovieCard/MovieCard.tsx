@@ -1,12 +1,23 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import styles from './MovieCard.module.css';
 import {Movie} from '../../services/MovieService';
+import CardActionsMenu from '../CardActionsMenu';
+import Context from '../../services/Context';
 
 interface MovieCardProps {
     movie: Movie
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({movie}) => {
+    const [showActionMenu, toggleActionMenu] = useState(false);
+
+    const {setMovieId} = useContext(Context);
+
+    const menuButtonHandler = () => {
+        setMovieId(movie.id);
+        toggleActionMenu(true);
+    };
+
     return (
         <li className={styles.movieCard}>
             <img src={movie.imageUrl} width='350' height='450'/>
@@ -15,7 +26,8 @@ const MovieCard: React.FC<MovieCardProps> = ({movie}) => {
                 <p className={styles.filmYear}>{movie.releaseDate.getFullYear()}</p>
             </div>
             <p className={styles.filmTagline}>{movie.tagline}</p>
-            <button type={'button'} className={styles.cardMenuButton}>...</button>
+            <button onClick={menuButtonHandler} type={'button'} className={styles.cardMenuButton}>...</button>
+            {showActionMenu && <CardActionsMenu closePopup={() => toggleActionMenu(false)} />}
         </li>
     );
 };

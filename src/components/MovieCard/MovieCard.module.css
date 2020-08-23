@@ -31,10 +31,10 @@
 
 .cardMenuButton {
     position: absolute;
-    padding: 0 10px 20px;
-    top: 15px;
-    right: 15px;
-    font-size: 40px;
+    padding: 0 5px 10px;
+    top: 25px;
+    right: 25px;
+    font-size: 20px;
     color: antiquewhite;
     background: #232323;
     border: none;
