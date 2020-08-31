@@ -7,14 +7,14 @@
 
 .sortForm:after {
     content: '▼';
-    position: relative;
-    right: 0;
+    position: absolute;
+    right: 10px;
     top: 0;
     display: block;
     width: 15px;
     height: 15px;
     color: #F65261;
-    z-index: 3;
+    z-index: 1;
 }
 
 .sortLabel {
