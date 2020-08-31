@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = () => {
     const mode = process.env.NODE_ENV || 'dev';
@@ -16,37 +16,37 @@ module.exports = () => {
         entry: ['@babel/polyfill', './index.js'],
         output: {
             filename: isDev ? '[name].bundle.js' : '[name].[hash].js',
-            path: path.resolve(__dirname, 'dist')
+            path: path.resolve(__dirname, 'dist'),
         },
         resolve: {
             modules: [path.resolve(__dirname, './'), 'node_modules'],
-            extensions: ['.js', '.jsx']
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
         optimization: {
             minimizer: isDev ? [] : [
                 new TerserWebpackPlugin(),
-                new OptimizeCssAssetsWebpackPlugin()
+                new OptimizeCssAssetsWebpackPlugin(),
             ],
             splitChunks: {
-                chunks: 'all'
-            }
+                chunks: 'all',
+            },
         },
         devServer: {
             port: process.env.PORT,
             open: true,
-            hot: isDev
+            hot: isDev,
         },
         plugins: [
             new HTMLWebpackPlugin({
                 template: './index.html',
                 minify: {
-                    collapseWhitespace: !isDev
-                }
+                    collapseWhitespace: !isDev,
+                },
             }),
             new CleanWebpackPlugin(),
             new MiniCssExtractPlugin({
-                filename: isDev ? '[name].bundle.css' : '[name].[hash].css'
-            })
+                filename: isDev ? '[name].bundle.css' : '[name].[hash].css',
+            }),
         ],
         module: {
             rules: [
@@ -58,13 +58,30 @@ module.exports = () => {
                         options: {
                             presets: [
                                 '@babel/preset-env',
-                                '@babel/preset-react'
+                                '@babel/preset-react',
                             ],
                             plugins: [
-                                '@babel/plugin-proposal-class-properties'
-                            ]
-                        }
-                    }
+                                '@babel/plugin-proposal-class-properties',
+                            ],
+                        },
+                    },
+                },
+                {
+                    test: /\.ts(x)?$/,
+                    exclude: /node_modules/,
+                    loader: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                '@babel/preset-env',
+                                '@babel/preset-typescript',
+                                '@babel/preset-react',
+                            ],
+                            plugins: [
+                                '@babel/plugin-proposal-class-properties',
+                            ],
+                        },
+                    },
                 },
                 {
                     test: /\.css$/,
@@ -73,20 +90,20 @@ module.exports = () => {
                             loader: MiniCssExtractPlugin.loader,
                             options: {
                                 hmr: isDev,
-                                reloadAll: true
-                            }
-                        }
-                        , 'css-loader']
+                                reloadAll: true,
+                            },
+                        },
+                        'css-loader'],
                 },
                 {
                     test: /\.(jpg|gif|png|svg)$/,
-                    use: ['file-loader']
+                    use: ['file-loader'],
                 },
                 {
                     test: /\.(ttf|eot|woff|woff2)$/,
-                    use: ['file-loader']
-                }
-            ]
-        }
+                    use: ['file-loader'],
+                },
+            ],
+        },
     }, conf);
 };

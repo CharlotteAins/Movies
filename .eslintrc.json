@@ -4,9 +4,10 @@
         "es2020": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "google"
     ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -15,18 +16,21 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "babel",
+        "@typescript-eslint"
     ],
     "rules": {
-        "indent": ["error", 4],
-        "linebreak-style": ["error", "unix"],
-        "quotes": ["error", "single"],
-        "semi": ["error", "always"],
-        "no-else-return"   : "error",
-        "space-unary-ops"  : "warn"
-    },
-    "globals": {
-        "module": true,
-        "require": true
+      "no-console": "warn",
+      "indent": ["error", 4],
+      "linebreak-style": ["error", "unix"],
+      "quotes": ["error", "single"],
+      "semi": ["error", "always"],
+      "no-else-return": "warn",
+      "space-unary-ops": "warn",
+      "no-unused-vars": "warn",
+      "max-len": ["warn", 120],
+      "require-jsdoc": "warn",
+      "react/prop-types": ["warn", { "ignore": ["children"] }]
     }
 }

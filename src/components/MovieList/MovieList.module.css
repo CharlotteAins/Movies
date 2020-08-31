@@ -1,0 +1,19 @@
+.moviesCount {
+    margin-bottom: 30px;
+    font-size: 22px;
+    color: antiquewhite;
+}
+
+.movieList {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.noMovie {
+    width: 300px;
+    margin: 250px auto;
+    font-size: 40px;
+    color: antiquewhite;
+}
