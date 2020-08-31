@@ -1,34 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './HomePage.module.css';
 import HeaderLayout from '../HeaderLayout';
-import Search from '../Search/Search';
+import Header from '../Header';
+import Search from '../Search';
 import MainLayout from '../MainLayout';
-import FilterPanel from '../FilterPanel';
-import ErrorBoundary from '../ErrorBoundary';
-import MovieList from '../MovieList';
 import Footer from '../Footer';
-import {Movie, MovieService} from '../../services/MovieService';
-import Loader from '../Loader/Loader';
+import MoviesPanel from "../MoviesPanel";
 
 const HomePage: React.FC = () => {
-    const [movies, setMovies] = useState<Movie[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-
-    MovieService.getAllMovies().then((movies) => {
-        setMovies(movies);
-        setLoading(false);
-    });
 
     return (
         <>
             <HeaderLayout>
+                <Header />
                 <Search/>
             </HeaderLayout>
             <MainLayout>
-                <FilterPanel/>
-                <ErrorBoundary>
-                    {loading ? (<Loader/>) : (<MovieList movies={movies}/>)}
-                </ErrorBoundary>
+               <MoviesPanel />
             </MainLayout>
             <Footer/>
         </>

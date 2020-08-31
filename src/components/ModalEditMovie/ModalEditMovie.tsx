@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useCallback, useContext, useState} from 'react';
 import styles from './ModalEditMovie.module.css';
 import ModalOverlay from '../ModalOverlay';
 import ModalFormWrapper from '../ModalFormWrapper';
@@ -33,11 +33,10 @@ const ModalEditMovie: React.FC = () => {
         setMovie(MovieService.getMovieById(processingMovieId));
     };
 
-    const saveHandler = () => {
-        console.log('save: ' + movie);
-        MovieService.editMovie(movie);
-        handleEditPopup();
-    };
+    const saveHandler = useCallback(() => {
+         MovieService.editMovie(movie);
+         handleEditPopup();
+    },[movie]);
 
     const inputHandler = (key: string, value: any) => {
         setMovie((prevState) => ({...prevState, [key]: value}));

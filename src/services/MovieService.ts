@@ -6,7 +6,8 @@ export interface Movie {
     releaseDate: Date,
     genres?: string[],
     runtime?: number,
-    overview?: string
+    overview?: string,
+    vote_average?: number
 }
 
 let mockMovies: Movie[] = [
@@ -21,6 +22,7 @@ let mockMovies: Movie[] = [
             'Romance'
         ],
         runtime: 130,
+        vote_average: 4.5,
         overview: 'A live-action adaptation of Disney`s version of the classic tale of a cursed prince and a beautiful young woman who helps him break the spell.'
     },
     {
@@ -34,6 +36,7 @@ let mockMovies: Movie[] = [
             'Adventure',
         ],
         runtime: 130,
+        vote_average: 4.5,
         overview: 'A live-action adaptation of Disney`s version of the classic tale of a cursed prince and a beautiful young woman who helps him break the spell.'
     },
     {
@@ -48,6 +51,7 @@ let mockMovies: Movie[] = [
             'Science Fiction',
         ],
         runtime: 130,
+        vote_average: 4.5,
         overview: 'A live-action adaptation of Disney`s version of the classic tale of a cursed prince and a beautiful young woman who helps him break the spell.'
     },
     {
@@ -63,6 +67,7 @@ let mockMovies: Movie[] = [
             'Science Fiction',
         ],
         runtime: 130,
+        vote_average: 4.5,
         overview: 'A live-action adaptation of Disney`s version of the classic tale of a cursed prince and a beautiful young woman who helps him break the spell.'
     },
     {
@@ -78,6 +83,7 @@ let mockMovies: Movie[] = [
             'Animation',
         ],
         runtime: 130,
+        vote_average: 4.5,
         overview: 'A live-action adaptation of Disney`s version of the classic tale of a cursed prince and a beautiful young woman who helps him break the spell.'
     },
     {
@@ -92,6 +98,7 @@ let mockMovies: Movie[] = [
             'Action',
         ],
         runtime: 130,
+        vote_average: 4.5,
         overview: 'A live-action adaptation of Disney`s version of the classic tale of a cursed prince and a beautiful young woman who helps him break the spell.'
     },
 ];
