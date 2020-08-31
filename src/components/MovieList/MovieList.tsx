@@ -8,15 +8,22 @@ interface MovieListProps {
 }
 
 const MovieList: React.FC<MovieListProps> = ({movies}) => {
+    if (movies.length) {
+        return (
+            <>
+                <p className={styles.moviesCount}><b>{movies.length}</b> movies found</p>
+                <ul className={styles.movieList}>
+                    {movies.map((movie) => {
+                        return <MovieCard movie={movie} key={movie.id}/>;
+                    })}
+                </ul>
+            </>
+        );
+    }
     return (
-        <>
-            <p className={styles.moviesCount}><b>{movies.length}</b> movies found</p>
-            <ul className={styles.movieList}>
-                {movies.map((movie) => {
-                    return <MovieCard movie={movie} key={movie.id}/>;
-                })}
-            </ul>
-        </>
+        <div className={styles.withoutMovies}>
+                Not any movie found =(
+        </div>
     );
 };
 

@@ -11,9 +11,10 @@
     list-style: none;
 }
 
-.noMovie {
-    width: 300px;
-    margin: 250px auto;
+.withoutMovies {
+    margin: 200px auto;
+    width: 800px;
+    text-align: center;
     font-size: 40px;
     color: antiquewhite;
 }

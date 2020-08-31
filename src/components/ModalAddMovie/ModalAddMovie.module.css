@@ -1,0 +1,11 @@
+.buttonsWrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 60px 0 20px;
+}
+
+.buttonBalancer {
+    display: flex;
+    justify-content: space-between;
+    min-width: 450px;
+}
