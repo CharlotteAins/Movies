@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useCallback, useContext, useState} from 'react';
 import styles from './ModalAddMovie.module.css';
 import ModalOverlay from '../ModalOverlay';
 import ModalFormWrapper from '../ModalFormWrapper';
@@ -38,10 +38,10 @@ const ModalAddMovie: React.FC = () => {
         setMovie(newMovie);
     };
 
-    const submitHandler = () => {
-        MovieService.addMovie(movie);
-        handleAddPopup();
-    };
+    const submitHandler = useCallback(() => {
+         MovieService.addMovie(movie);
+         handleAddPopup();
+    }, [movie]);
 
     return (
         <>
@@ -63,10 +63,10 @@ const ModalAddMovie: React.FC = () => {
 
                     <label form={'url'}>movie url</label>
                     <input id={'url'}
-                        type={'text'}
-                        onChange={(e) => inputHandler('imageUrl', e.target.value)}
-                        value={movie.imageUrl}
-                        placeholder={'movie URL here'}/>
+                           type={'text'}
+                           onChange={(e) => inputHandler('imageUrl', e.target.value)}
+                           value={movie.imageUrl}
+                           placeholder={'movie URL here'}/>
 
                     <CategorySelector
                         selectedCategories={movie.genres}

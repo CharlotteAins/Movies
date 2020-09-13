@@ -18,9 +18,13 @@ const MovieCard: React.FC<MovieCardProps> = ({movie}) => {
         toggleActionMenu(true);
     };
 
+    const cardClickHandler = () => {
+        setMovieId(movie.id);
+    }
+
     return (
         <li className={styles.movieCard}>
-            <img src={movie.imageUrl} width='350' height='450'/>
+            <img onClick={cardClickHandler} src={movie.imageUrl} width='350' height='450'/>
             <div className={styles.filmInfo}>
                 <p className={styles.filmTitle}>{movie.title}</p>
                 <p className={styles.filmYear}>{movie.releaseDate.getFullYear()}</p>

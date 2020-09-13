@@ -5,11 +5,13 @@ import ModalAddMovie from './components/ModalAddMovie/ModalAddMovie';
 import ModalDeleteMovie from './components/ModalDeleteMovie/ModalDeleteMovie';
 import Context from './services/Context';
 import {MovieService} from './services/MovieService';
+import MovieDetailsPage from "./components/MovieDetailsPage/MovieDetailsPage";
+import {useToggle} from "./services/UtilHooks";
 
 const App: React.FC = () => {
-    const [showDeletePopup, setDeletePopupState] = useState(false);
-    const [showEditPopup, setEditPopupState] = useState(false);
-    const [showAddPopup, setAddPopupState] = useState(false);
+    const [showDeletePopup, setDeletePopupState] = useToggle();
+    const [showEditPopup, setEditPopupState] = useToggle();
+    const [showAddPopup, setAddPopupState] = useToggle();
     const [processingMovieId, setProcessingMovieId] = useState(0);
 
     const deleteHandler = () => {
@@ -18,15 +20,15 @@ const App: React.FC = () => {
     };
 
     const handleDeletePopup = () => {
-        setDeletePopupState((prevState) => !prevState);
+        setDeletePopupState();
     };
 
     const handleEditPopup = () => {
-        setEditPopupState((prevState) => !prevState);
+        setEditPopupState();
     };
 
     const handleAddPopup = () => {
-        setAddPopupState((prevState) => !prevState);
+        setAddPopupState();
     };
 
     const setMovieId = (id: number) => {
@@ -38,7 +40,8 @@ const App: React.FC = () => {
             {showDeletePopup && <ModalDeleteMovie deleteHandler={deleteHandler}/>}
             {showEditPopup && <ModalEditMovie />}
             {showAddPopup && <ModalAddMovie/>}
-            <HomePage/>
+            {/*<HomePage/>*/}
+            <MovieDetailsPage movieId={processingMovieId}/>
         </Context.Provider>
     );
 };
