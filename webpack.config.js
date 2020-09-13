@@ -17,6 +17,7 @@ module.exports = () => {
         output: {
             filename: isDev ? '[name].bundle.js' : '[name].[hash].js',
             path: path.resolve(__dirname, 'dist'),
+            publicPath: '/'
         },
         resolve: {
             modules: [path.resolve(__dirname, './'), 'node_modules'],
@@ -35,6 +36,7 @@ module.exports = () => {
             port: process.env.PORT,
             open: true,
             hot: isDev,
+            historyApiFallback: isDev
         },
         plugins: [
             new HTMLWebpackPlugin({

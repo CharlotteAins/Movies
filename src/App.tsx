@@ -4,44 +4,25 @@ import ModalEditMovie from './components/ModalEditMovie/ModalEditMovie';
 import ModalAddMovie from './components/ModalAddMovie/ModalAddMovie';
 import ModalDeleteMovie from './components/ModalDeleteMovie/ModalDeleteMovie';
 import Context from './services/Context';
-import {MovieService} from './services/MovieService';
-import MovieDetailsPage from "./components/MovieDetailsPage/MovieDetailsPage";
-import {useToggle} from "./services/UtilHooks";
+import {useSelector} from 'react-redux'
 
 const App: React.FC = () => {
-    const [showDeletePopup, setDeletePopupState] = useToggle();
-    const [showEditPopup, setEditPopupState] = useToggle();
-    const [showAddPopup, setAddPopupState] = useToggle();
+    const showDeletePopup = useSelector(state => state.app.showDeletePopup);
+    const showEditPopup = useSelector(state => state.app.showEditPopup);
+    const showAddPopup = useSelector(state => state.app.showAddPopup);
     const [processingMovieId, setProcessingMovieId] = useState(0);
-
-    const deleteHandler = () => {
-        MovieService.deleteMovie(processingMovieId);
-        setDeletePopupState(false);
-    };
-
-    const handleDeletePopup = () => {
-        setDeletePopupState();
-    };
-
-    const handleEditPopup = () => {
-        setEditPopupState();
-    };
-
-    const handleAddPopup = () => {
-        setAddPopupState();
-    };
 
     const setMovieId = (id: number) => {
         setProcessingMovieId(id);
     };
 
     return (
-        <Context.Provider value={{handleDeletePopup, handleEditPopup, handleAddPopup, setMovieId, processingMovieId}}>
-            {showDeletePopup && <ModalDeleteMovie deleteHandler={deleteHandler}/>}
+        <Context.Provider value={{setMovieId, processingMovieId}}>
+            {showDeletePopup && <ModalDeleteMovie />}
             {showEditPopup && <ModalEditMovie />}
             {showAddPopup && <ModalAddMovie/>}
-            {/*<HomePage/>*/}
-            <MovieDetailsPage movieId={processingMovieId}/>
+            <HomePage/>
+            {/*<MovieDetailsPage />*/}
         </Context.Provider>
     );
 };

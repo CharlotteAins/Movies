@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useState} from 'react';
+import React, {useState} from 'react';
 import styles from './ModalAddMovie.module.css';
 import ModalOverlay from '../ModalOverlay';
 import ModalFormWrapper from '../ModalFormWrapper';
@@ -7,14 +7,17 @@ import PrettyButton from '../PrettyButton';
 import 'react-datepicker/dist/react-datepicker.css';
 import CategorySelector from '../CategorySelector';
 import DateInput from '../DateInput';
-import Context from '../../services/Context';
-import {Movie, MovieService} from '../../services/MovieService';
+import {Movie} from '../../services/MovieService';
+import {useDispatch} from 'react-redux'
+import {addMovie} from "../../redux/movieActions";
+import {closeAllPopups} from "../../redux/appActions";
 
 const ModalAddMovie: React.FC = () => {
-    const {handleAddPopup} = useContext(Context);
 
-    const newMovie: Movie = {id: 0, releaseDate: null, imageUrl: '', title: '', genres: []};
+    const newMovie: Movie = {release_date: null, poster_path: '', title: '', overview: '', runtime: 0, genres: []};
     const [movie, setMovie] = useState(newMovie);
+
+    const dispatch = useDispatch();
 
     const changeCategoryList = (category: string): void => {
         if (movie.genres.includes(category)) {
@@ -38,16 +41,16 @@ const ModalAddMovie: React.FC = () => {
         setMovie(newMovie);
     };
 
-    const submitHandler = useCallback(() => {
-         MovieService.addMovie(movie);
-         handleAddPopup();
-    }, [movie]);
+    const submitHandler = () => {
+        dispatch(addMovie(movie));
+        dispatch(closeAllPopups());
+    };
 
     return (
         <>
-            <ModalOverlay closePopupHandler={handleAddPopup}/>
+            <ModalOverlay />
             <ModalFormWrapper>
-                <ModalCloseButton closeModal={handleAddPopup}/>
+                <ModalCloseButton />
                 <form>
                     <h3>Add movie</h3>
 
@@ -59,13 +62,28 @@ const ModalAddMovie: React.FC = () => {
                         value={movie.title}
                         placeholder={'enter title'}/>
 
-                    <DateInput startDate={movie.releaseDate} dateHandler={inputHandler}/>
+                    <label form={'overview'}>overview</label>
+                    <input
+                        id={'overview'}
+                        type={'text'}
+                        onChange={(e) => inputHandler('overview', e.target.value)}
+                        value={movie.overview}
+                        placeholder={'enter overview'}/>
+
+                    <label form={'runtime'}>runtime</label>
+                    <input id={'runtime'}
+                           type={'number'}
+                           onChange={(e) => inputHandler('runtime', +(e.target.value))}
+                           value={movie.runtime}
+                           placeholder={'runtime text goes here'}/>
+
+                    <DateInput startDate={movie.release_date} dateHandler={inputHandler}/>
 
                     <label form={'url'}>movie url</label>
                     <input id={'url'}
                            type={'text'}
-                           onChange={(e) => inputHandler('imageUrl', e.target.value)}
-                           value={movie.imageUrl}
+                           onChange={(e) => inputHandler('poster_path', e.target.value)}
+                           value={movie.poster_path}
                            placeholder={'movie URL here'}/>
 
                     <CategorySelector

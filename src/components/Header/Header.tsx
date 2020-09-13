@@ -1,15 +1,21 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Logo from '../Logo';
 import styles from './Header.module.css';
-import Context from '../../services/Context';
+import {useDispatch} from 'react-redux'
+import {showPopup} from "../../redux/appActions";
 
 const Header: React.FC = () => {
-    const {handleAddPopup} = useContext(Context);
+
+    const dispatch = useDispatch();
+
+    const handlePopup = (popup: string) => {
+        dispatch(showPopup(popup))
+    }
 
     return (
         <header className={styles.header}>
             <Logo/>
-            <button onClick={handleAddPopup} className={styles.btnAdd}>+ add movie</button>
+            <button onClick={() => handlePopup("Add")} className={styles.btnAdd}>+ add movie</button>
         </header>
     );
 };

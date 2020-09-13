@@ -1,22 +1,21 @@
-import React, {useEffect, useState} from "react";
-import styles from './MoviesPanel.module.css'
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from 'react-redux'
 import Loader from "../Loader";
 import FilterPanel from "../FilterPanel";
 import ErrorBoundary from "../ErrorBoundary";
 import MovieList from "../MovieList";
-import {Movie, MovieService} from "../../services/MovieService";
+import {fetchMovies} from "../../redux/movieActions";
+import {Movie} from "../../services/MovieService";
 
 const MoviesPanel: React.FC = () => {
 
-    const [movies, setMovies] = useState<Movie[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+    const movies: Movie[] = useSelector(state => state.movies.movies)
+    const loading: boolean = useSelector(state => state.app.loader)
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        MovieService.getAllMovies().then((movies) => {
-            setMovies(movies);
-            setLoading(false);
-        });
-    })
+        dispatch(fetchMovies())
+    }, [])
 
     return (
         <>

@@ -1,20 +1,16 @@
 import React from "react";
-import styles from './MovieDetailsPage.module.css'
 import HeaderLayout from "../HeaderLayout";
 import MainLayout from "../MainLayout";
 import MoviesPanel from "../MoviesPanel";
 import Footer from "../Footer";
 import MovieDetailsHeader from "../MovieDetailsHeader";
 import MovieDetails from "../MovieDetails";
-import {Movie, MovieService} from "../../services/MovieService";
+import {Movie} from "../../services/MovieService";
+import {useSelector} from 'react-redux'
 
-interface MovieDetailsPageProps {
-    movieId: number
-}
+const MovieDetailsPage: React.FC = () => {
 
-const MovieDetailsPage: React.FC<MovieDetailsPageProps> = ({movieId}) => {
-
-    const currentMovie:Movie = MovieService.getMovieById(movieId);
+    const currentMovie: Movie = useSelector(state => state.movies.processingMovie)
 
     return (
         <>
