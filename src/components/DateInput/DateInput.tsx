@@ -12,7 +12,7 @@ const DateInput: React.FC<DateInputState> = ({startDate, dateHandler}) => {
         <>
             <label form={'date'}>realize date</label>
             <div className={styles.calendarIcon}/>
-            <DatePicker id={'date'} selected={startDate} onChange={(date) => dateHandler('releaseDate', date)} placeholderText={'Select Date'}/>
+            <DatePicker id={'date'} selected={startDate} onChange={(date) => dateHandler('release_date', date)} placeholderText={'Select Date'}/>
         </>
     );
 };

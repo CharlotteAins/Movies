@@ -12,7 +12,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({movie}) => {
     } else {
         return (
             <div className={styles.detailsWrapper}>
-                <img src={movie.imageUrl} width='350' height='450'/>
+                <img src={movie.poster_path} width='350' height='450'/>
                 <div className={styles.description}>
                     <div className={styles.title}>
                         <h3>{movie.title}</h3>
@@ -20,7 +20,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({movie}) => {
                     </div>
                     <p>{movie.tagline}</p>
                     <div className={styles.timeInformation}>
-                        <span>{movie.releaseDate.getFullYear()}</span>
+                        <span>{movie.release_date.getFullYear()}</span>
                         <span>{movie.runtime} min</span>
                     </div>
                     <p>{movie.overview}</p>

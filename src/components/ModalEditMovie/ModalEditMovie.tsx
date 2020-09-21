@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useState} from 'react';
+import React, {useState} from 'react';
 import styles from './ModalEditMovie.module.css';
 import ModalOverlay from '../ModalOverlay';
 import ModalFormWrapper from '../ModalFormWrapper';
@@ -7,13 +7,16 @@ import PrettyButton from '../PrettyButton';
 import 'react-datepicker/dist/react-datepicker.css';
 import CategorySelector from '../CategorySelector';
 import DateInput from '../DateInput';
-import Context from '../../services/Context';
-import {MovieService} from '../../services/MovieService';
+import {useDispatch, useSelector} from 'react-redux'
+import {editMovie} from "../../redux/movieActions";
+import {HIDE_POPUP} from "../../redux/types";
 
 const ModalEditMovie: React.FC = () => {
-    const {handleEditPopup, processingMovieId} = useContext(Context);
 
-    const [movie, setMovie] = useState(MovieService.getMovieById(processingMovieId));
+    const processingMovie = useSelector(state => state.movies.processingMovie)
+    const [movie, setMovie] = useState(processingMovie);
+    const dispatch = useDispatch();
+
 
     const changeCategoryList = (category: string): void => {
         if (movie.genres.includes(category)) {
@@ -30,13 +33,13 @@ const ModalEditMovie: React.FC = () => {
     };
 
     const resetHandler = () => {
-        setMovie(MovieService.getMovieById(processingMovieId));
+        setMovie(processingMovie);
     };
 
-    const saveHandler = useCallback(() => {
-         MovieService.editMovie(movie);
-         handleEditPopup();
-    },[movie]);
+    const saveHandler = () => {
+         dispatch(editMovie(movie))
+         dispatch({type: HIDE_POPUP, payload: 'Edit'})
+    };
 
     const inputHandler = (key: string, value: any) => {
         setMovie((prevState) => ({...prevState, [key]: value}));
@@ -44,9 +47,9 @@ const ModalEditMovie: React.FC = () => {
 
     return (
         <>
-            <ModalOverlay closePopupHandler={handleEditPopup}/>
+            <ModalOverlay />
             <ModalFormWrapper>
-                <ModalCloseButton closeModal={handleEditPopup}/>
+                <ModalCloseButton />
                 <form>
                     <h3>Edit movie</h3>
                     <label>movie id</label>
@@ -60,13 +63,13 @@ const ModalEditMovie: React.FC = () => {
                         value={movie.title}
                         placeholder={'enter title'}/>
 
-                    <DateInput startDate={movie.releaseDate} dateHandler={inputHandler}/>
+                    <DateInput startDate={movie.release_date} dateHandler={inputHandler}/>
 
                     <label form={'url'}>movie url</label>
                     <input id={'url'}
                         type={'text'}
                         onChange={(e) => inputHandler('imageUrl', e.target.value)}
-                        value={movie.imageUrl}
+                        value={movie.poster_path}
                         placeholder={'movie URL here'}/>
 
                     <CategorySelector
@@ -83,7 +86,7 @@ const ModalEditMovie: React.FC = () => {
                     <label form={'runtime'}>runtime</label>
                     <input id={'runtime'}
                         type={'number'}
-                        onChange={(e) => inputHandler('runtime', e.target.value)}
+                        onChange={(e) => inputHandler('runtime', +(e.target.value))}
                         value={movie.runtime}
                         placeholder={'runtime text goes here'}/>
 

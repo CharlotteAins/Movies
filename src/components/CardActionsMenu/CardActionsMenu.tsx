@@ -1,20 +1,29 @@
-import React, {useContext, useState} from 'react';
+import React from 'react';
 import styles from './CardActionsMenu.module.css';
-import Context from '../../services/Context';
+import {useDispatch} from 'react-redux'
+import {getMovieById} from "../../redux/movieActions";
+import {showPopup} from "../../redux/appActions";
 
 interface CardActionsMenuProps {
-    closePopup: () => void
+    closePopup: () => void,
+    movieId: number
 }
 
-const CardActionsMenu: React.FC<CardActionsMenuProps> = ({closePopup}) => {
-    const {handleDeletePopup, handleEditPopup} = useContext(Context);
+const CardActionsMenu: React.FC<CardActionsMenuProps> = ({closePopup, movieId}) => {
+
+    const dispatch = useDispatch();
+
+    const handlePopup = (popup: string) => {
+        dispatch(getMovieById(movieId));
+        dispatch(showPopup(popup))
+    }
 
     return (
         <div className={styles.actionMenu}>
             <button onClick={closePopup} className={styles.closeButton}>&times;</button>
             <ul onClick={closePopup} className={styles.actionList}>
-                <li onClick={handleEditPopup}>edit</li>
-                <li onClick={handleDeletePopup}>delete</li>
+                <li onClick={() => handlePopup("Edit")}>edit</li>
+                <li onClick={() => handlePopup("Delete")}>delete</li>
             </ul>
         </div>
     );
