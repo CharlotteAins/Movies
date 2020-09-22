@@ -35,3 +35,8 @@
     border-radius: 5px;
     outline: none;
 }
+
+.modalFormWrapper span {
+    color: #F65261;
+    font-size: 14px;
+}
