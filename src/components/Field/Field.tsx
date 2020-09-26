@@ -5,19 +5,14 @@ interface FieldProps {
     inputKey: string,
     label: string,
     type: string,
-    onChangeHandler: (key: string, value: any) => void,
+    onChange: (e) => void,
+    onBlur: (e) => void,
     value: any,
     placeholder: string,
-    error?: string
+    error?: string | any
 }
 
-const Field: React.FC<FieldProps> = ({inputKey, label, type, onChangeHandler, value, placeholder, error}) => {
-
-    const inputHandler = useCallback( (e: ChangeEvent<HTMLInputElement>) => {
-            let inputValue = type === 'number' ? +e.target.value : e.target.value;
-            onChangeHandler(inputKey, inputValue)
-        }, [type]);
-
+const Field: React.FC<FieldProps> = ({inputKey, label, type, onChange, onBlur, value, placeholder, error}) => {
 
     return (
         <>
@@ -25,7 +20,8 @@ const Field: React.FC<FieldProps> = ({inputKey, label, type, onChangeHandler, va
             <input
                 id={inputKey}
                 type={type}
-                onChange={inputHandler}
+                onChange={onChange}
+                onBlur={onBlur}
                 value={value}
                 placeholder={placeholder}/>
             <span>{error}</span>

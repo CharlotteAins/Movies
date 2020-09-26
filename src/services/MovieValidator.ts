@@ -7,36 +7,34 @@ export interface ValidationError {
     genres?: string,
 }
 
-export const MovieValidator = {
 
-    validate: function (key: string, value: any): ValidationError {
-        const error: ValidationError = {};
+export const MovieValidator = (values) => {
+    const errors: ValidationError = {};
 
-        switch (key) {
-            case 'title':
-                if (!value.trim()) error.title = 'Title is required';
-                else error.title = '';
-                return error;
-            case 'overview':
-                if (!value.trim()) error.overview = 'Overview is required';
-                else  error.overview = '';
-                return error;
-            case 'runtime':
-                if (isNaN(value)) error.runtime = 'Runtime should be number';
-                else if (value < 0) error.runtime = 'Runtime should be positive';
-                else error.runtime = '';
-                return error;
-            case 'poster_path':
-                if (!value.trim()) error.poster_path = 'Image URL is required';
-                else if (!value.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/gi)) error.poster_path = 'Image URL should be correct';
-                else error.poster_path = '';
-                return error;
-            case 'genres':
-                if (!value.length) error.genres = 'Genre should be at least one';
-                else error.genres = '';
-                return error;
-            default:
-                return error;
-        }
+    if (!values.title.trim()) {
+        errors.title = 'Title is required';
     }
+
+    if (!values.overview.trim()) {
+        errors.overview = 'Overview is required';
+    }
+
+    if (isNaN(values.runtime)) {
+        errors.runtime = 'Runtime should be number';
+    } else if (values.runtime < 0) {
+        errors.runtime = 'Runtime should be positive';
+    }
+
+    if (!values.poster_path.trim()) {
+        errors.poster_path = 'Image URL is required';
+    } else if (!values.poster_path.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/gi)) {
+        errors.poster_path = 'Image URL should be correct';
+    }
+
+    if (!values.genres.length) {
+        errors.genres = 'Genre should be at least one';
+    }
+
+    return errors;
 }
+

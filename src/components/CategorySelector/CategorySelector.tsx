@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import styles from './CategorySelector.module.css';
 import {MovieService} from '../../services/MovieService';
 
 interface CategorySelectorState {
     selectedCategories: string[],
-    chooseCategoryHandler: (category: string) => void
+    chooseCategoryHandler: (field: string, value: any) => void
 }
 
 const CategorySelector: React.FC<CategorySelectorState> = ({selectedCategories, chooseCategoryHandler}) => {
@@ -36,9 +36,10 @@ const CategorySelector: React.FC<CategorySelectorState> = ({selectedCategories, 
                             <label className={styles.container}>
                                 <span>{category}</span>
                                 <input
+                                    id={'genres'}
                                     className={styles.checkbox}
                                     type='checkbox'
-                                    onChange={() => chooseCategoryHandler(category)}
+                                    onChange={() => chooseCategoryHandler('genres', selectedCategories.concat(category))}
                                     checked={!!selectedCategories.includes(category)}/>
                                 <span className={styles.checkmark}/>
                             </label>

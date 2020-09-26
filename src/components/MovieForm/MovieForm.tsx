@@ -1,108 +1,92 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Movie} from "../../services/MovieService";
 import Field from "../Field";
 import styles from './MovieForm.module.css';
-import DateInput from "../DateInput";
 import PrettyButton from "../PrettyButton";
 import CategorySelector from "../CategorySelector";
-import {MovieValidator, ValidationError} from "../../services/MovieValidator";
+import {MovieValidator} from "../../services/MovieValidator";
+import {useFormik} from 'formik';
+import DateInput from "../DateInput";
 
 interface MovieFormProps {
     formType: string,
     initialMovie: Movie,
-    submitHandler: (movie: Movie, error: ValidationError) => void
+    submitHandler: (movie: Movie) => void
 }
 
 const MovieForm: React.FC<MovieFormProps> = ({formType, initialMovie, submitHandler}) => {
 
-    const newError: ValidationError = {};
-    const [movie, setMovie] = useState(initialMovie);
-    const [error, setError] = useState(newError);
-
-    const changeCategoryList = (category: string): void => {
-        setMovie(prevState => {
-            let newGenres;
-            if (prevState.genres.includes(category)) {
-                newGenres = prevState.genres.filter((genre) => genre !== category);
-            } else {
-                newGenres = [...prevState.genres, category];
-            }
-            validateInput('genres', newGenres);
-            return {...prevState, genres: newGenres};
-        })
-    };
-
-    const inputHandler = (key: string, value: any) => {
-        validateInput(key, value);
-        setMovie((prevState) => ({...prevState, [key]: value}));
-    };
-
-    const validateInput = (key: string, value: any) => {
-        const validationError = MovieValidator.validate(key, value);
-        setError(prevState => ({...prevState, ...validationError}))
-    }
-
-    const resetHandler = () => {
-        setMovie(initialMovie);
-    };
+    const formik = useFormik({
+        initialValues: initialMovie,
+        validate: MovieValidator,
+        onSubmit: submitHandler
+    });
 
     return (
-        <form>
+        <form onSubmit={formik.handleSubmit}>
             <h3>{formType} movie</h3>
 
             {formType === 'edit' &&
             <>
                 <label>movie id</label>
-                <div>{movie.id}</div>
+                <div>{formik.values.id}</div>
             </>}
 
             <Field
                 inputKey='title'
                 label='title'
                 type='text'
-                onChangeHandler={inputHandler}
-                value={movie.title}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.title}
                 placeholder='enter title'
-                error={error.title}/>
+                error={formik.errors.title}/>
 
             <Field
                 inputKey='overview'
                 label='overview'
                 type='text'
-                onChangeHandler={inputHandler}
-                value={movie.overview}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.overview}
                 placeholder='enter overview'
-                error={error.overview}/>
+                error={formik.errors.overview}/>
 
             <Field
                 inputKey='runtime'
                 label='runtime'
                 type='number'
-                onChangeHandler={inputHandler}
-                value={movie.runtime}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.runtime}
                 placeholder='runtime text goes here'
-                error={error.runtime}/>
+                error={formik.errors.runtime}/>
 
-            <DateInput startDate={movie.release_date} dateHandler={inputHandler}/>
+            <DateInput
+                startDate={formik.values.release_date}
+                dateHandler={formik.setFieldValue}
+            />
 
             <Field
                 inputKey='poster_path'
                 label='movie url'
                 type='text'
-                onChangeHandler={inputHandler}
-                value={movie.poster_path}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.poster_path}
                 placeholder='movie URL here'
-                error={error.poster_path}/>
+                error={formik.errors.poster_path}/>
 
             <CategorySelector
-                selectedCategories={movie.genres}
-                chooseCategoryHandler={changeCategoryList}/>
-            <span>{error.genres}</span>
+                selectedCategories={formik.values.genres}
+                chooseCategoryHandler={formik.setFieldValue}
+            />
 
             <div className={styles.buttonsWrapper}>
                 <div className={styles.buttonBalancer}>
-                    <PrettyButton clickHandler={resetHandler} text='reset'/>
-                    <PrettyButton clickHandler={() => submitHandler(movie, error)}
+                    <PrettyButton clickHandler={() => formik.resetForm()}
+                                  text='reset'/>
+                    <PrettyButton clickHandler={() => formik.handleSubmit()}
                                   text={formType === 'add' ? 'save' : 'submit'}/>
                 </div>
             </div>
