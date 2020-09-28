@@ -6,16 +6,22 @@ import ErrorBoundary from "../ErrorBoundary";
 import MovieList from "../MovieList";
 import {fetchMovies} from "../../redux/movieActions";
 import {Movie} from "../../services/MovieService";
+import {useParams} from 'react-router-dom';
 
 const MoviesPanel: React.FC = () => {
 
     const movies: Movie[] = useSelector(state => state.movies.movies)
     const loading: boolean = useSelector(state => state.app.loader)
     const dispatch = useDispatch();
+    const {category, sortBy, search} = useParams();
 
     useEffect(() => {
-        dispatch(fetchMovies())
-    }, [])
+        if (!category && !sortBy && !search) {
+            dispatch(fetchMovies())
+        } else {
+            dispatch(fetchMovies(category, sortBy, search))
+        }
+    }, [category, sortBy, search])
 
     return (
         <>

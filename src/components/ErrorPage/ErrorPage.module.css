@@ -1,0 +1,19 @@
+.errorWrapper {
+    height: calc(100vh - 67px);
+    padding: 20px;
+    background-color: #232323;
+}
+
+.errorCenter h3 {
+    color: antiquewhite;
+    font-size: 36px;
+    font-weight: lighter;
+    text-transform: capitalize;
+}
+
+.errorCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

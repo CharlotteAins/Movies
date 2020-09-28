@@ -1,8 +1,8 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import styles from './MovieCard.module.css';
 import {Movie} from '../../services/MovieService';
 import CardActionsMenu from '../CardActionsMenu';
-import Context from '../../services/Context';
+import {useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux'
 import {getMovieById} from "../../redux/movieActions";
 
@@ -13,18 +13,16 @@ interface MovieCardProps {
 const MovieCard: React.FC<MovieCardProps> = ({movie}) => {
     const [showActionMenu, toggleActionMenu] = useState(false);
 
-    const {setMovieId} = useContext(Context);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const menuButtonHandler = () => {
-        setMovieId(movie.id);
         dispatch(getMovieById(movie.id))
         toggleActionMenu(true);
     };
 
     const cardClickHandler = () => {
-        setMovieId(movie.id);
-        dispatch(getMovieById(movie.id))
+        history.push(`/film/${movie.id}`);
     }
 
     return (

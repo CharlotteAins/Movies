@@ -4,9 +4,10 @@ export const ADD_MOVIE = "ADD_MOVIE";
 export const EDIT_MOVIE = "EDIT_MOVIE";
 export const DELETE_MOVIE = "DELETE_MOVIE";
 export const GET_MOVIE_BY_ID = "GET_MOVIE_BY_ID";
-export const FILTER_MOVIES = "FILTER_MOVIES";
 export const SORT_MOVIES = "SORT_MOVIES";
 export const SET_FILTER_GENRES = "SET_FILTER_GENRES";
+export const SET_SORT_BY = "SET_SORT_BY";
+export const SET_SEARCH = "SET_SEARCH";
 
 // app types
 export const SHOW_LOADER = "SHOW_LOADER";

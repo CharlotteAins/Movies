@@ -7,7 +7,7 @@ interface MovieDetailsProps {
 }
 
 const MovieDetails: React.FC<MovieDetailsProps> = ({movie}) => {
-    if (movie == null) {
+    if (movie.id == undefined) {
         return <div className={styles.withoutMovie}>Movie wasn't found, choose another</div>
     } else {
         return (
