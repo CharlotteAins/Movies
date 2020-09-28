@@ -4,15 +4,19 @@ import DatePicker from 'react-datepicker';
 
 interface DateInputState {
     startDate: Date,
-    dateHandler: (key: string, value: any) => void
+    dateHandler: (field: string, value: any) => void
 }
 
 const DateInput: React.FC<DateInputState> = ({startDate, dateHandler}) => {
     return (
         <>
-            <label form={'date'}>realize date</label>
+            <label form={'release_date'}>realize date</label>
             <div className={styles.calendarIcon}/>
-            <DatePicker id={'date'} selected={startDate} onChange={(date) => dateHandler('release_date', date)} placeholderText={'Select Date'}/>
+            <DatePicker id={'release_date'}
+                        name={'release_date'}
+                        selected={(startDate && new Date(startDate)) || null}
+                        onChange={val => dateHandler('release_date', val)}
+                        placeholderText={'Select Date'}/>
         </>
     );
 };
