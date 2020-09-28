@@ -10,7 +10,6 @@ import MovieForm from "../MovieForm/MovieForm";
 import {Movie} from "../../services/MovieService";
 import {addMovie} from "../../redux/movieActions";
 import {closeAllPopups} from "../../redux/appActions";
-import {ValidationError} from "../../services/MovieValidator";
 
 const ModalAddMovie: React.FC = () => {
 
@@ -18,12 +17,9 @@ const ModalAddMovie: React.FC = () => {
 
     const dispatch = useDispatch();
 
-    const submitHandler = (movie: Movie, error: ValidationError) => {
-        const errorNumber = Object.values(error).filter(v => v != '').length;
-        if (errorNumber === 0) {
+    const submitHandler = (movie: Movie) => {
             dispatch(addMovie(movie));
             dispatch(closeAllPopups());
-        }
     };
 
     return (
