@@ -39,6 +39,8 @@ const CategorySelector: React.FC<CategorySelectorState> = ({selectedCategories, 
                                     id={'genres'}
                                     className={styles.checkbox}
                                     type='checkbox'
+                                    value={category}
+                                    placeholder={category}
                                     onChange={() => chooseCategoryHandler('genres', selectedCategories.concat(category))}
                                     checked={!!selectedCategories.includes(category)}/>
                                 <span className={styles.checkmark}/>

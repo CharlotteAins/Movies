@@ -11,7 +11,7 @@ import {Movie} from "../services/MovieService";
 
 const initialState = {
     movies: [],
-    processingMovie: {release_date: new Date(), poster_path: '', title: '', overview: '', runtime: 0, genres: []},
+    processingMovie: {release_date: new Date('2020-10-10T03:24:00'), poster_path: '', title: '', overview: '', runtime: 0, genres: []},
     filterGenre: 'all',
     sortBy: '',
     search: ''

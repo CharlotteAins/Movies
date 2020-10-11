@@ -1,0 +1,810 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieForm should render properly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <form>
+        <h3>
+          add
+           movie
+        </h3>
+        <label
+          form="title"
+        >
+          title
+        </label>
+        <input
+          id="title"
+          placeholder="enter title"
+          type="text"
+          value=""
+        />
+        <span />
+        <label
+          form="overview"
+        >
+          overview
+        </label>
+        <input
+          id="overview"
+          placeholder="enter overview"
+          type="text"
+          value=""
+        />
+        <span />
+        <label
+          form="runtime"
+        >
+          runtime
+        </label>
+        <input
+          id="runtime"
+          placeholder="runtime text goes here"
+          type="number"
+          value="0"
+        />
+        <span />
+        <label
+          form="release_date"
+        >
+          realize date
+        </label>
+        <div
+          class="calendarIcon"
+        />
+        <div
+          class="react-datepicker-wrapper"
+        >
+          <div
+            class="react-datepicker__input-container"
+          >
+            <input
+              class=""
+              id="release_date"
+              name="release_date"
+              placeholder="Select Date"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <label
+          form="poster_path"
+        >
+          movie url
+        </label>
+        <input
+          id="poster_path"
+          placeholder="movie URL here"
+          type="text"
+          value=""
+        />
+        <span />
+        <label
+          form="genre"
+        >
+          genre
+        </label>
+        <div
+          class="inputWrapper"
+        >
+          <div
+            class="selectorIcon"
+          />
+          <input
+            disabled=""
+            id="genre"
+            placeholder="select genre"
+            value=""
+          />
+        </div>
+        <ul
+          class="categoryList"
+          hidden=""
+        >
+          <li
+            class="categoryItem"
+          >
+            <label
+              class="container"
+            >
+              <span>
+                action
+              </span>
+              <input
+                class="checkbox"
+                id="genres"
+                placeholder="action"
+                type="checkbox"
+                value="action"
+              />
+              <span
+                class="checkmark"
+              />
+            </label>
+          </li>
+          <li
+            class="categoryItem"
+          >
+            <label
+              class="container"
+            >
+              <span>
+                adventure
+              </span>
+              <input
+                class="checkbox"
+                id="genres"
+                placeholder="adventure"
+                type="checkbox"
+                value="adventure"
+              />
+              <span
+                class="checkmark"
+              />
+            </label>
+          </li>
+          <li
+            class="categoryItem"
+          >
+            <label
+              class="container"
+            >
+              <span>
+                animation
+              </span>
+              <input
+                class="checkbox"
+                id="genres"
+                placeholder="animation"
+                type="checkbox"
+                value="animation"
+              />
+              <span
+                class="checkmark"
+              />
+            </label>
+          </li>
+          <li
+            class="categoryItem"
+          >
+            <label
+              class="container"
+            >
+              <span>
+                comedy
+              </span>
+              <input
+                class="checkbox"
+                id="genres"
+                placeholder="comedy"
+                type="checkbox"
+                value="comedy"
+              />
+              <span
+                class="checkmark"
+              />
+            </label>
+          </li>
+          <li
+            class="categoryItem"
+          >
+            <label
+              class="container"
+            >
+              <span>
+                crime
+              </span>
+              <input
+                class="checkbox"
+                id="genres"
+                placeholder="crime"
+                type="checkbox"
+                value="crime"
+              />
+              <span
+                class="checkmark"
+              />
+            </label>
+          </li>
+          <li
+            class="categoryItem"
+          >
+            <label
+              class="container"
+            >
+              <span>
+                documentary
+              </span>
+              <input
+                class="checkbox"
+                id="genres"
+                placeholder="documentary"
+                type="checkbox"
+                value="documentary"
+              />
+              <span
+                class="checkmark"
+              />
+            </label>
+          </li>
+          <li
+            class="categoryItem"
+          >
+            <label
+              class="container"
+            >
+              <span>
+                drama
+              </span>
+              <input
+                class="checkbox"
+                id="genres"
+                placeholder="drama"
+                type="checkbox"
+                value="drama"
+              />
+              <span
+                class="checkmark"
+              />
+            </label>
+          </li>
+          <li
+            class="categoryItem"
+          >
+            <label
+              class="container"
+            >
+              <span>
+                family
+              </span>
+              <input
+                class="checkbox"
+                id="genres"
+                placeholder="family"
+                type="checkbox"
+                value="family"
+              />
+              <span
+                class="checkmark"
+              />
+            </label>
+          </li>
+          <li
+            class="categoryItem"
+          >
+            <label
+              class="container"
+            >
+              <span>
+                fantasy
+              </span>
+              <input
+                class="checkbox"
+                id="genres"
+                placeholder="fantasy"
+                type="checkbox"
+                value="fantasy"
+              />
+              <span
+                class="checkmark"
+              />
+            </label>
+          </li>
+          <li
+            class="categoryItem"
+          >
+            <label
+              class="container"
+            >
+              <span>
+                horror
+              </span>
+              <input
+                class="checkbox"
+                id="genres"
+                placeholder="horror"
+                type="checkbox"
+                value="horror"
+              />
+              <span
+                class="checkmark"
+              />
+            </label>
+          </li>
+          <li
+            class="categoryItem"
+          >
+            <label
+              class="container"
+            >
+              <span>
+                romance
+              </span>
+              <input
+                class="checkbox"
+                id="genres"
+                placeholder="romance"
+                type="checkbox"
+                value="romance"
+              />
+              <span
+                class="checkmark"
+              />
+            </label>
+          </li>
+          <li
+            class="categoryItem"
+          >
+            <label
+              class="container"
+            >
+              <span>
+                science fiction
+              </span>
+              <input
+                class="checkbox"
+                id="genres"
+                placeholder="science fiction"
+                type="checkbox"
+                value="science fiction"
+              />
+              <span
+                class="checkmark"
+              />
+            </label>
+          </li>
+        </ul>
+        <div
+          class="buttonsWrapper"
+        >
+          <div
+            class="buttonBalancer"
+          >
+            <button
+              class="btnPretty"
+              type="button"
+            >
+              reset
+            </button>
+            <button
+              class="btnPretty"
+              type="button"
+            >
+              save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>,
+  "container": <div>
+    <form>
+      <h3>
+        add
+         movie
+      </h3>
+      <label
+        form="title"
+      >
+        title
+      </label>
+      <input
+        id="title"
+        placeholder="enter title"
+        type="text"
+        value=""
+      />
+      <span />
+      <label
+        form="overview"
+      >
+        overview
+      </label>
+      <input
+        id="overview"
+        placeholder="enter overview"
+        type="text"
+        value=""
+      />
+      <span />
+      <label
+        form="runtime"
+      >
+        runtime
+      </label>
+      <input
+        id="runtime"
+        placeholder="runtime text goes here"
+        type="number"
+        value="0"
+      />
+      <span />
+      <label
+        form="release_date"
+      >
+        realize date
+      </label>
+      <div
+        class="calendarIcon"
+      />
+      <div
+        class="react-datepicker-wrapper"
+      >
+        <div
+          class="react-datepicker__input-container"
+        >
+          <input
+            class=""
+            id="release_date"
+            name="release_date"
+            placeholder="Select Date"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <label
+        form="poster_path"
+      >
+        movie url
+      </label>
+      <input
+        id="poster_path"
+        placeholder="movie URL here"
+        type="text"
+        value=""
+      />
+      <span />
+      <label
+        form="genre"
+      >
+        genre
+      </label>
+      <div
+        class="inputWrapper"
+      >
+        <div
+          class="selectorIcon"
+        />
+        <input
+          disabled=""
+          id="genre"
+          placeholder="select genre"
+          value=""
+        />
+      </div>
+      <ul
+        class="categoryList"
+        hidden=""
+      >
+        <li
+          class="categoryItem"
+        >
+          <label
+            class="container"
+          >
+            <span>
+              action
+            </span>
+            <input
+              class="checkbox"
+              id="genres"
+              placeholder="action"
+              type="checkbox"
+              value="action"
+            />
+            <span
+              class="checkmark"
+            />
+          </label>
+        </li>
+        <li
+          class="categoryItem"
+        >
+          <label
+            class="container"
+          >
+            <span>
+              adventure
+            </span>
+            <input
+              class="checkbox"
+              id="genres"
+              placeholder="adventure"
+              type="checkbox"
+              value="adventure"
+            />
+            <span
+              class="checkmark"
+            />
+          </label>
+        </li>
+        <li
+          class="categoryItem"
+        >
+          <label
+            class="container"
+          >
+            <span>
+              animation
+            </span>
+            <input
+              class="checkbox"
+              id="genres"
+              placeholder="animation"
+              type="checkbox"
+              value="animation"
+            />
+            <span
+              class="checkmark"
+            />
+          </label>
+        </li>
+        <li
+          class="categoryItem"
+        >
+          <label
+            class="container"
+          >
+            <span>
+              comedy
+            </span>
+            <input
+              class="checkbox"
+              id="genres"
+              placeholder="comedy"
+              type="checkbox"
+              value="comedy"
+            />
+            <span
+              class="checkmark"
+            />
+          </label>
+        </li>
+        <li
+          class="categoryItem"
+        >
+          <label
+            class="container"
+          >
+            <span>
+              crime
+            </span>
+            <input
+              class="checkbox"
+              id="genres"
+              placeholder="crime"
+              type="checkbox"
+              value="crime"
+            />
+            <span
+              class="checkmark"
+            />
+          </label>
+        </li>
+        <li
+          class="categoryItem"
+        >
+          <label
+            class="container"
+          >
+            <span>
+              documentary
+            </span>
+            <input
+              class="checkbox"
+              id="genres"
+              placeholder="documentary"
+              type="checkbox"
+              value="documentary"
+            />
+            <span
+              class="checkmark"
+            />
+          </label>
+        </li>
+        <li
+          class="categoryItem"
+        >
+          <label
+            class="container"
+          >
+            <span>
+              drama
+            </span>
+            <input
+              class="checkbox"
+              id="genres"
+              placeholder="drama"
+              type="checkbox"
+              value="drama"
+            />
+            <span
+              class="checkmark"
+            />
+          </label>
+        </li>
+        <li
+          class="categoryItem"
+        >
+          <label
+            class="container"
+          >
+            <span>
+              family
+            </span>
+            <input
+              class="checkbox"
+              id="genres"
+              placeholder="family"
+              type="checkbox"
+              value="family"
+            />
+            <span
+              class="checkmark"
+            />
+          </label>
+        </li>
+        <li
+          class="categoryItem"
+        >
+          <label
+            class="container"
+          >
+            <span>
+              fantasy
+            </span>
+            <input
+              class="checkbox"
+              id="genres"
+              placeholder="fantasy"
+              type="checkbox"
+              value="fantasy"
+            />
+            <span
+              class="checkmark"
+            />
+          </label>
+        </li>
+        <li
+          class="categoryItem"
+        >
+          <label
+            class="container"
+          >
+            <span>
+              horror
+            </span>
+            <input
+              class="checkbox"
+              id="genres"
+              placeholder="horror"
+              type="checkbox"
+              value="horror"
+            />
+            <span
+              class="checkmark"
+            />
+          </label>
+        </li>
+        <li
+          class="categoryItem"
+        >
+          <label
+            class="container"
+          >
+            <span>
+              romance
+            </span>
+            <input
+              class="checkbox"
+              id="genres"
+              placeholder="romance"
+              type="checkbox"
+              value="romance"
+            />
+            <span
+              class="checkmark"
+            />
+          </label>
+        </li>
+        <li
+          class="categoryItem"
+        >
+          <label
+            class="container"
+          >
+            <span>
+              science fiction
+            </span>
+            <input
+              class="checkbox"
+              id="genres"
+              placeholder="science fiction"
+              type="checkbox"
+              value="science fiction"
+            />
+            <span
+              class="checkmark"
+            />
+          </label>
+        </li>
+      </ul>
+      <div
+        class="buttonsWrapper"
+      >
+        <div
+          class="buttonBalancer"
+        >
+          <button
+            class="btnPretty"
+            type="button"
+          >
+            reset
+          </button>
+          <button
+            class="btnPretty"
+            type="button"
+          >
+            save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
