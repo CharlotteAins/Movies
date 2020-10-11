@@ -5,7 +5,7 @@ import {
     FETCH_MOVIES,
     GET_MOVIE_BY_ID,
     HIDE_LOADER,
-    SET_FILTER_GENRES,
+    SET_FILTER_GENRES, SET_SEARCH, SET_SORT_BY,
     SHOW_LOADER
 } from "./types";
 import {Movie} from "../services/MovieService";
@@ -13,30 +13,20 @@ import axios from 'axios';
 
 const HOST = 'http://localhost:4000/';
 
-export function fetchMovies(genre: string = 'all',sortBy: string = '') {
+export function fetchMovies(genre: string = '', sortBy: string = '', search: string = '') {
     return (dispatch) => {
         dispatch({type: SHOW_LOADER});
         dispatch({type: SET_FILTER_GENRES, payload: genre});
+        dispatch({type: SET_SORT_BY, payload: sortBy});
+        dispatch({type: SET_SEARCH, payload: search});
         let url = HOST + 'movies';
-        url += genre != 'all' ? ('?filter=' + genre + '&') : '?';
-        url += sortBy ? 'sortBy=' + sortBy : '';
+        url += genre && genre != 'all' ? ('?filter=' + genre + '&') : '?';
+        url += sortBy ? ('sortBy=' + sortBy + '&sortOrder=desc&') : '';
+        url += search ? 'search=' + search + '&searchBy=title' : '';
+        url += !genre && !sortBy && !search ? 'filter=showNothing' : '';
         axios.get(url)
             .then((resp) => {
-                let movies = resp.data.data;
-
-                if(sortBy) {
-                    movies = movies.sort((movieA, movieB) => {
-                        if(movieA[sortBy] > movieB[sortBy]) {
-                            return 1;
-                        } else if(movieA[sortBy] < movieB[sortBy]) {
-                            return -1;
-                        } else {
-                            return 0;
-                        }
-                    });
-                }
-
-                dispatch({type: FETCH_MOVIES, payload: movies});
+                dispatch({type: FETCH_MOVIES, payload: resp.data.data});
                 dispatch({type: HIDE_LOADER});
             })
     }

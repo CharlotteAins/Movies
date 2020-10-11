@@ -1,10 +1,20 @@
-import {ADD_MOVIE, DELETE_MOVIE, EDIT_MOVIE, FETCH_MOVIES, GET_MOVIE_BY_ID, SET_FILTER_GENRES} from "./types";
+import {
+    ADD_MOVIE,
+    DELETE_MOVIE,
+    EDIT_MOVIE,
+    FETCH_MOVIES,
+    GET_MOVIE_BY_ID,
+    SET_FILTER_GENRES, SET_SEARCH,
+    SET_SORT_BY
+} from "./types";
 import {Movie} from "../services/MovieService";
 
 const initialState = {
     movies: [],
     processingMovie: {release_date: new Date(), poster_path: '', title: '', overview: '', runtime: 0, genres: []},
-    filterGenre: 'all'
+    filterGenre: 'all',
+    sortBy: '',
+    search: ''
 };
 
 export const movieReducer = (state = initialState, action) => {
@@ -21,6 +31,10 @@ export const movieReducer = (state = initialState, action) => {
             return {...state, processingMovie: action.payload}
         case SET_FILTER_GENRES:
             return {...state, filterGenre: action.payload}
+        case SET_SORT_BY:
+            return {...state, sortBy: action.payload}
+        case SET_SEARCH:
+            return {...state, search: action.payload}
         default:
             return state;
     }
