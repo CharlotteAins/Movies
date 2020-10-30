@@ -3,13 +3,32 @@
     "outDir": "./dist/",
     "sourceMap": true,
     "esModuleInterop": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "allowJs": true,
     "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
     "noResolve": false,
     "noImplicitAny": false,
-    "removeComments": true
-  }
+    "removeComments": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx", "next.config.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

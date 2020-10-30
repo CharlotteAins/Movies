@@ -1,13 +1,12 @@
+import Router from 'next/router';
 import React from 'react';
+import Footer from '../Footer';
+import Logo from '../Logo';
+import PrettyButton from '../PrettyButton';
 import styles from './ErrorPage.module.css';
-import Footer from "../Footer";
-import Logo from "../Logo";
-import {useHistory} from 'react-router-dom';
-import PrettyButton from "../PrettyButton";
 
 const ErrorPage: React.FC = () => {
-
-    const history = useHistory();
+    const backHome = () => Router.push( '/' );
 
     return (
         <>
@@ -15,8 +14,8 @@ const ErrorPage: React.FC = () => {
                 <Logo/>
                 <div className={styles.errorCenter}>
                     <h3>page not found</h3>
-                    <img src='/src/images/404.jpg' width='600' height='240'/>
-                    <PrettyButton clickHandler={() => history.push('/')} text='Go back to home' />
+                    <img src='/images/404.jpg' width='600' height='240' />
+                    <PrettyButton clickHandler={backHome} text='Go back to home' />
                 </div>
             </div>
             <Footer/>

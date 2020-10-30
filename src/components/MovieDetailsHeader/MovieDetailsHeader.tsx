@@ -1,18 +1,17 @@
-import React from "react";
-import styles from './MovieDetailsHeader.module.css'
-import Logo from "../Logo";
-import {useHistory} from 'react-router-dom';
+import Router from 'next/router';
+import React from 'react';
+import Logo from '../Logo';
+import styles from './MovieDetailsHeader.module.css';
 
 const MovieDetailsHeader: React.FC = () => {
-
-    const history = useHistory();
+    const backHome = () => Router.push( '/' );
 
     return (
         <div className={styles.headerWrapper}>
-            <Logo/>
-            <button onClick={() => history.push('/')} className={styles.searchButton} type={"button"}>&#9906;</button>
+            <Logo />
+            <button onClick={backHome} className={styles.searchButton} type={'button'}>&#9906;</button>
         </div>
-    )
-}
+    );
+};
 
 export default MovieDetailsHeader;

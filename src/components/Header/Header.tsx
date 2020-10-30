@@ -1,11 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { showPopup } from '../../redux/appActions';
 import Logo from '../Logo';
 import styles from './Header.module.css';
-import {useDispatch} from 'react-redux'
-import {showPopup} from "../../redux/appActions";
 
 const Header: React.FC = () => {
-
     const dispatch = useDispatch();
 
     const handlePopup = (popup: string) => {

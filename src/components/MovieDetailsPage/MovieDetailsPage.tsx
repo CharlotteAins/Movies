@@ -1,22 +1,21 @@
-import React, {useEffect} from "react";
-import HeaderLayout from "../HeaderLayout";
-import MainLayout from "../MainLayout";
-import MoviesPanel from "../MoviesPanel";
-import Footer from "../Footer";
-import MovieDetailsHeader from "../MovieDetailsHeader";
-import MovieDetails from "../MovieDetails";
-import {Movie} from "../../services/MovieService";
-import {useDispatch, useSelector} from 'react-redux'
-import {useParams} from 'react-router-dom';
-import {fetchMovies, getMovieById} from "../../redux/movieActions";
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMovies, getMovieById } from '../../redux/movieActions';
+import { Movie } from '../../services/MovieService';
+import Footer from '../Footer';
+import HeaderLayout from '../HeaderLayout';
+import MainLayout from '../MainLayout';
+import MovieDetails from '../MovieDetails';
+import MovieDetailsHeader from '../MovieDetailsHeader';
+import MoviesPanel from '../MoviesPanel';
 
 const MovieDetailsPage: React.FC = () => {
-
     const dispatch = useDispatch();
-    const {filterGenre, sortBy, search} = useSelector(state => state.movies);
-    const {id} = useParams();
+    const { filterGenre, sortBy, search } = useSelector( ( state ) => state.movies );
+    const { id } = useRouter().query;
 
-    const currentMovie: Movie = useSelector(state => state.movies.processingMovie);
+    const currentMovie: Movie = useSelector( ( state ) => state.movies.processingMovie );
 
     useEffect(() => {
         dispatch(getMovieById(id));

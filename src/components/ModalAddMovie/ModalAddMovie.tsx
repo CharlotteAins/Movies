@@ -1,15 +1,15 @@
 import React from 'react';
-import ModalOverlay from '../ModalOverlay';
-import ModalFormWrapper from '../ModalFormWrapper';
-import ModalCloseButton from '../ModalCloseButton';
-
 import 'react-datepicker/dist/react-datepicker.css';
+import { useDispatch } from 'react-redux';
+import { closeAllPopups } from '../../redux/appActions';
+import { addMovie } from '../../redux/movieActions';
+import { Movie } from '../../services/MovieService';
+import ModalCloseButton from '../ModalCloseButton';
+import ModalFormWrapper from '../ModalFormWrapper';
+import ModalOverlay from '../ModalOverlay';
+import MovieForm from '../MovieForm/MovieForm';
 
-import {useDispatch} from 'react-redux'
-import MovieForm from "../MovieForm/MovieForm";
-import {Movie} from "../../services/MovieService";
-import {addMovie} from "../../redux/movieActions";
-import {closeAllPopups} from "../../redux/appActions";
+
 
 const ModalAddMovie: React.FC = () => {
 

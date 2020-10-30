@@ -1,3 +1,4 @@
+import { Movie } from '../services/MovieService';
 import {
     ADD_MOVIE,
     DELETE_MOVIE,
@@ -6,15 +7,14 @@ import {
     GET_MOVIE_BY_ID,
     SET_FILTER_GENRES, SET_SEARCH,
     SET_SORT_BY
-} from "./types";
-import {Movie} from "../services/MovieService";
+} from './types';
 
 const initialState = {
     movies: [],
     processingMovie: {release_date: new Date(), poster_path: '', title: '', overview: '', runtime: 0, genres: []},
     filterGenre: 'all',
-    sortBy: '',
-    search: ''
+    sortBy: '%20',
+    search: '%20',
 };
 
 export const movieReducer = (state = initialState, action) => {

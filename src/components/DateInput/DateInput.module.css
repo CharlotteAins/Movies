@@ -1,18 +1,18 @@
 .calendarIcon {
-    position: absolute;
+  position: absolute;
 }
 
 .calendarIcon:after {
-    content: "";
-    position: relative;
-    left: 550px;
-    top: 10px;
-    display: block;
-    width: 30px;
-    height: 30px;
-    color: #F65261;
-    background-size: 30px 30px;
-    background-image: url("src/images/calendar-icon.svg");
-    background-repeat: no-repeat;
-    z-index: 5;
+  content: "";
+  position: relative;
+  left: 550px;
+  top: 10px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  color: #F65261;
+  background-size: 30px 30px;
+  background-image: url("/images/calendar-icon.svg");
+  background-repeat: no-repeat;
+  z-index: 5;
 }
