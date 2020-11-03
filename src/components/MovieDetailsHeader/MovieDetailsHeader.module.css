@@ -1,17 +1,17 @@
 .headerWrapper {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .searchButton {
-    height: 20px;
-    margin: 0;
-    padding: 0;
-    color: #F65261;
-    font-size: 42px;
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transform: rotate(45deg);
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  color: #F65261;
+  font-size: 42px;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transform: rotate(45deg);
 }

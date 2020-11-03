@@ -1,13 +1,13 @@
 .modalCloseButton {
-    position: absolute;
-    right: 30px;
-    top: 30px;
-    align-self: flex-end;
-    font-size: 42px;
-    line-height: 22px;
-    color: antiquewhite;
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  align-self: flex-end;
+  font-size: 42px;
+  line-height: 22px;
+  color: antiquewhite;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
 }

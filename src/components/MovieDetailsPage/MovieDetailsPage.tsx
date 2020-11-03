@@ -11,29 +11,29 @@ import MovieDetailsHeader from '../MovieDetailsHeader';
 import MoviesPanel from '../MoviesPanel';
 
 const MovieDetailsPage: React.FC = () => {
-    const dispatch = useDispatch();
-    const { filterGenre, sortBy, search } = useSelector( ( state ) => state.movies );
-    const { id } = useRouter().query;
+  const dispatch = useDispatch();
+  const { filterGenre, sortBy, search } = useSelector( ( state ) => state.movies );
+  const { id } = useRouter().query;
 
-    const currentMovie: Movie = useSelector( ( state ) => state.movies.processingMovie );
+  const currentMovie: Movie = useSelector( ( state ) => state.movies.processingMovie );
 
-    useEffect(() => {
-        dispatch(getMovieById(id));
-        dispatch(fetchMovies(filterGenre, sortBy, search));
-    },[id]);
+  useEffect( () => {
+    dispatch( getMovieById( +id ) );
+    dispatch( fetchMovies( filterGenre, sortBy, search ) );
+  }, [ id, filterGenre, sortBy, search ] );
 
-    return (
-        <>
-            <HeaderLayout darkMode={true}>
-                <MovieDetailsHeader/>
-                <MovieDetails movie={currentMovie}/>
-            </HeaderLayout>
-            <MainLayout>
-                <MoviesPanel/>
-            </MainLayout>
-            <Footer/>
-        </>
-    )
-}
+  return (
+    <>
+      <HeaderLayout darkMode={true}>
+        <MovieDetailsHeader />
+        <MovieDetails movie={currentMovie} />
+      </HeaderLayout>
+      <MainLayout>
+        <MoviesPanel />
+      </MainLayout>
+      <Footer />
+    </>
+  );
+};
 
 export default MovieDetailsPage;

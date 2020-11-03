@@ -14,7 +14,7 @@ export const initializeStore = () => {
   let _store = store ?? makeState();
 
   if ( store ) {
-    _store = makeState( store.getState() );
+    _store = makeState();
     store = undefined;
   }
 

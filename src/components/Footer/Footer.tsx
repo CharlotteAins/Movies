@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from './Footer.module.css';
 import Logo from '../Logo';
+import styles from './Footer.module.css';
 
 
 const Footer: React.FC = () => {
-    return (
-        <footer className={styles.footer}>
-            <Logo />
-        </footer>
-    );
+  return (
+    <footer className={styles.footer}>
+      <Logo />
+    </footer>
+  );
 };
 
 export default Footer;

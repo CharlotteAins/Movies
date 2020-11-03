@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { editMovie } from '../../redux/movieActions';
@@ -11,26 +11,27 @@ import MovieForm from '../MovieForm/MovieForm';
 
 
 const ModalEditMovie: React.FC = () => {
-    const processingMovie = useSelector( ( state ) => state.movies.processingMovie );
-    const dispatch = useDispatch();
+  const processingMovie = useSelector( ( state ) => state.movies.processingMovie );
+  const dispatch = useDispatch();
 
-    const saveHandler = ( movie: Movie ) => {
-        dispatch( editMovie( movie ) );
-        dispatch( { type: HIDE_POPUP, payload: 'Edit' } );
-    };
+  const saveHandler = useCallback(
+    ( movie: Movie ) => {
+      dispatch( editMovie( movie ) );
+      dispatch( { type: HIDE_POPUP, payload: 'Edit' } );
+    }, [ editMovie ] );
 
-    return (
-        <>
-            <ModalOverlay />
-            <ModalFormWrapper>
-                <ModalCloseButton />
-                <MovieForm
-                    formType='edit'
-                    initialMovie={processingMovie}
-                    submitHandler={saveHandler} />
-            </ModalFormWrapper>
-        </>
-    );
+  return (
+    <>
+      <ModalOverlay />
+      <ModalFormWrapper>
+        <ModalCloseButton />
+        <MovieForm
+          formType='edit'
+          initialMovie={processingMovie}
+          submitHandler={saveHandler} />
+      </ModalFormWrapper>
+    </>
+  );
 };
 
 export default ModalEditMovie;

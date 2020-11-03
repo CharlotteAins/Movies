@@ -1,4 +1,3 @@
-/.next/
-/.idea/
+.idea/
 /node_modules/
-.gitignore
+/dist/

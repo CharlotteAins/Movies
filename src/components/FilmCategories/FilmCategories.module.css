@@ -1,26 +1,26 @@
 .categoriesList {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
 }
 
 .categoriesItem {
-    margin-right: 25px;
-    cursor: pointer;
+  margin-right: 25px;
+  cursor: pointer;
 }
 
 .categoriesItem:after {
-    content: '';
-    position: relative;
-    top: 24px;
-    display: block;
-    height: 4px;
-    opacity: 0;
-    background-color: #F65261;
-    transition: all 0.5s;
+  content: '';
+  position: relative;
+  top: 24px;
+  display: block;
+  height: 4px;
+  opacity: 0;
+  background-color: #F65261;
+  transition: all 0.5s;
 }
 
 .categoriesItem:hover:after,
 .categoriesItem:focus:after {
-    opacity: 1;
+  opacity: 1;
 }
