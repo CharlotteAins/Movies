@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch } from 'react-redux';
 import { closeAllPopups } from '../../redux/appActions';
@@ -12,15 +12,15 @@ import MovieForm from '../MovieForm/MovieForm';
 
 
 const ModalAddMovie: React.FC = () => {
-
-    const newMovie: Movie = {release_date: null, poster_path: '', title: '', overview: '', runtime: 0, genres: []};
+    const newMovie: Movie = { release_date: null, poster_path: '', title: '', overview: '', runtime: 0, genres: [] };
 
     const dispatch = useDispatch();
 
-    const submitHandler = (movie: Movie) => {
-            dispatch(addMovie(movie));
-            dispatch(closeAllPopups());
-    };
+    const submitHandler = useCallback(
+        ( movie: Movie ) => {
+            dispatch( addMovie( movie ) );
+            dispatch( closeAllPopups() );
+        }, [ newMovie ] );
 
     return (
         <>
@@ -29,8 +29,8 @@ const ModalAddMovie: React.FC = () => {
                 <ModalCloseButton />
                 <MovieForm
                     formType='add'
-                initialMovie={newMovie}
-                submitHandler={submitHandler}/>
+                    initialMovie={newMovie}
+                    submitHandler={submitHandler} />
             </ModalFormWrapper>
         </>
     );

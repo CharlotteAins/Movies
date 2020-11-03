@@ -7,18 +7,18 @@ import MoviesPanel from '../MoviesPanel';
 import Search from '../Search';
 
 const HomePage: React.FC = () => {
-    return (
-        <>
-            <HeaderLayout>
-                <Header />
-                <Search/>
-            </HeaderLayout>
-            <MainLayout>
-               <MoviesPanel />
-            </MainLayout>
-            <Footer/>
-        </>
-    );
+  return (
+    <>
+      <HeaderLayout>
+        <Header />
+        <Search />
+      </HeaderLayout>
+      <MainLayout>
+        <MoviesPanel />
+      </MainLayout>
+      <Footer />
+    </>
+  );
 };
 
 export default HomePage;

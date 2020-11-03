@@ -1,23 +1,23 @@
 .btnPretty {
-    padding: 15px 60px;
-    color: antiquewhite;
-    text-transform: uppercase;
-    outline: none;
-    font-size: 28px;
-    background: #F65261;
-    border: none;
-    border-radius: 5px;
+  padding: 15px 60px;
+  color: antiquewhite;
+  text-transform: uppercase;
+  outline: none;
+  font-size: 28px;
+  background: #F65261;
+  border: none;
+  border-radius: 5px;
 }
 
 .btnPretty:hover {
-    padding: 13px 58px;
-    color: #F65261;
-    background: none;
-    border: 2px solid #F65261;
+  padding: 13px 58px;
+  color: #F65261;
+  background: none;
+  border: 2px solid #F65261;
 }
 
 .btnPretty:active {
-    color: antiquewhite;
-    background: rgba(7, 7, 7, 0.7);
-    border: 2px solid antiquewhite;
+  color: antiquewhite;
+  background: rgba(7, 7, 7, 0.7);
+  border: 2px solid antiquewhite;
 }
