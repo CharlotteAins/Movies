@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './FilterPanel.module.css';
-import FilmCategories from '../Filmcategories';
+import FilmCategories from '../FilmCategories';
 import FilmsSort from '../FilmsSort';
+import styles from './FilterPanel.module.css';
 
 const FilterPanel: React.FC = () => {
     return (

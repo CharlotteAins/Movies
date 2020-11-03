@@ -1,14 +1,12 @@
 import React from 'react';
-import styles from './HomePage.module.css';
-import HeaderLayout from '../HeaderLayout';
-import Header from '../Header';
-import Search from '../Search';
-import MainLayout from '../MainLayout';
 import Footer from '../Footer';
-import MoviesPanel from "../MoviesPanel";
+import Header from '../Header';
+import HeaderLayout from '../HeaderLayout';
+import MainLayout from '../MainLayout';
+import MoviesPanel from '../MoviesPanel';
+import Search from '../Search';
 
 const HomePage: React.FC = () => {
-
     return (
         <>
             <HeaderLayout>

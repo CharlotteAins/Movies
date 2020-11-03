@@ -1,3 +1,5 @@
+import axios from 'axios';
+import { Movie } from '../services/MovieService';
 import {
     ADD_MOVIE,
     DELETE_MOVIE,
@@ -7,9 +9,7 @@ import {
     HIDE_LOADER,
     SET_FILTER_GENRES, SET_SEARCH, SET_SORT_BY,
     SHOW_LOADER
-} from "./types";
-import {Movie} from "../services/MovieService";
-import axios from 'axios';
+} from './types';
 
 const HOST = 'http://localhost:4000/';
 
@@ -54,7 +54,7 @@ export function editMovie(movie: Movie) {
     }
 }
 
-export function getMovieById(id: number) {
+export function getMovieById(id: number | string | string[]) {
     return (dispatch) => {
         axios.get<Movie>(HOST + 'movies/' + id)
             .then((resp) => {

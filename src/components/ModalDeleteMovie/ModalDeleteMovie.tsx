@@ -1,16 +1,15 @@
 import React from 'react';
-import styles from './ModalDeleteMovie.module.css';
-import ModalOverlay from '../ModalOverlay';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeAllPopups } from '../../redux/appActions';
+import { deleteMovie } from '../../redux/movieActions';
 import ModalCloseButton from '../ModalCloseButton';
+import ModalOverlay from '../ModalOverlay';
 import PrettyButton from '../PrettyButton';
-import {useDispatch, useSelector} from 'react-redux'
-import {deleteMovie} from "../../redux/movieActions";
-import {closeAllPopups} from "../../redux/appActions";
+import styles from './ModalDeleteMovie.module.css';
 
 const ModalDeleteMovie: React.FC = () => {
-
     const dispatch = useDispatch();
-    const processingMovie = useSelector(state => state.movies.processingMovie);
+    const processingMovie = useSelector( ( state ) => state.movies.processingMovie );
 
     const deleteHandler = () => {
         dispatch(deleteMovie(processingMovie.id));
@@ -19,13 +18,13 @@ const ModalDeleteMovie: React.FC = () => {
 
     return (
         <>
-            <ModalOverlay/>
+            <ModalOverlay />
             <div className={styles.modalWrapper}>
-                <ModalCloseButton/>
+                <ModalCloseButton />
                 <h3>Delete movie</h3>
                 <p>Are you sure you want to delete this movie?</p>
                 <div className={styles.buttonPosition}>
-                    <PrettyButton clickHandler={deleteHandler} text={'Confirm'}/>
+                    <PrettyButton clickHandler={deleteHandler} text={'Confirm'} />
                 </div>
             </div>
         </>

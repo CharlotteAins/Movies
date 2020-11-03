@@ -1,19 +1,21 @@
-import React, {useRef} from 'react';
+import { useRouter } from 'next/router';
+import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
 import PrettyButton from '../PrettyButton';
 import styles from './Seach.module.css';
-import {useSelector} from 'react-redux'
-import {useHistory} from 'react-router-dom';
 
 const Search: React.FC = () => {
-
-    const searchInput = useRef(null);
-    const history = useHistory();
-    const {filterGenre, sortBy} = useSelector(state => state.movies);
+    const searchInput = useRef( null );
+    const { filterGenre, sortBy } = useSelector( ( state ) => state.movies );
+    const router = useRouter();
 
     const searchHandler = () => {
-        history.push(`/search/${filterGenre ? filterGenre : 'all'}/${sortBy ? sortBy : ' '}/${searchInput.current.value ? searchInput.current.value : ' /'}`)
-        searchInput.current.value = '';
-    }
+        router.push( {
+            pathname: '/search/[category]/[sortBy]/[search]',
+            query: { category: filterGenre, sortBy, search: searchInput.current.value },
+        } );
+        searchInput.current.value = ' ';
+    };
 
     return (
         <>

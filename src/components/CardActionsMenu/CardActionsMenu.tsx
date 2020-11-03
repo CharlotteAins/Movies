@@ -1,8 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { showPopup } from '../../redux/appActions';
+import { getMovieById } from '../../redux/movieActions';
 import styles from './CardActionsMenu.module.css';
-import {useDispatch} from 'react-redux'
-import {getMovieById} from "../../redux/movieActions";
-import {showPopup} from "../../redux/appActions";
 
 interface CardActionsMenuProps {
     closePopup: () => void,

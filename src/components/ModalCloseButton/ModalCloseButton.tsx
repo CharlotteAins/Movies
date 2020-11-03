@@ -1,10 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { closeAllPopups } from '../../redux/appActions';
 import styles from './ModalCloseButton.module.css';
-import {useDispatch} from 'react-redux'
-import {closeAllPopups} from "../../redux/appActions";
 
 const ModalCloseButton: React.FC = () => {
-
     const dispatch = useDispatch();
 
     const closeHandler = () => {
